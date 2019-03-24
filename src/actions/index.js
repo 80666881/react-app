@@ -1,6 +1,9 @@
-let nextTodoId = 0
 //因为在reducer中还要使用type，所以这里要在actionType中统一定义
 import {ADD_TODO,TOGGLE_TODO,SET_FILTER,SET_TODO_TEXT} from './actionTypes'
+
+let nextTodoId = 0
+
+
 /**
  * 新增待办事项
  */
