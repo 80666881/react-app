@@ -5,7 +5,7 @@ import {getVisibleTodos} from '../selectors'
 
 //state是redux的全局state
 const mapStateToProps = (state) => ({
-    todos: getVisibleTodos(state)
+    todos: getVisibleTodos(state).toJS()
 })
 
 //dispatch就是state的dispatch
