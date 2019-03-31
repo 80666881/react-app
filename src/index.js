@@ -6,10 +6,10 @@ import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 import thunkMiddleware from 'redux-thunk'
 import loggerMiddleware from './middlewares/loggers'
-
-const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import loggerEnhancer from './enhancers/logger'
+// const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer,
-    composeEnhancers(applyMiddleware(thunkMiddleware,loggerMiddleware))
+    compose(applyMiddleware(thunkMiddleware),loggerEnhancer)
 )
 ReactDOM.render(
     <Provider store={store}>
