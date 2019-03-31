@@ -1,23 +1,11 @@
 import { connect } from 'react-redux'
 import TodoList from '../components/TodoList'
 import { toggleTodo,fetchTodos } from '../actions';
-
-const getVisibleTodos = (todos, filter) => {
-    switch (filter) {
-        case 'all':
-            return todos
-        case 'completed':
-            return todos.filter((item) => item.completed)
-        case 'active':
-            return todos.filter((item) => !item.completed)
-        default:
-            return new Error('Unknow filter '+filter)
-    }
-}
+import {getVisibleTodos} from '../selectors'
 
 //state是redux的全局state
 const mapStateToProps = (state) => ({
-    todos: getVisibleTodos(state.todos.data,state.filter)
+    todos: getVisibleTodos(state)
 })
 
 //dispatch就是state的dispatch
