@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import TodoList from '../components/TodoList'
 import { toggleTodo,fetchTodos } from '../actions';
 import {getVisibleTodos} from '../selectors'
-import {toJS} from '../HOCs/toJS'
 //state是redux的全局state
 const mapStateToProps = (state) => ({
     todos: getVisibleTodos(state)
@@ -16,4 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
 /**
  * 利用connect高阶组件完成react和redux的连接
  */
-export default connect(mapStateToProps, mapDispatchToProps)(toJS(TodoList))
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

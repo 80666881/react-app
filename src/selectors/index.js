@@ -1,12 +1,11 @@
-export const getText = (state)=>state.get('text')
+import {createSelector} from 'reselect'
+export const getText = (state) => state.text
 
-export const getFilter = (state)=>state.get('filter')
+export const getFilter = (state) => state.filter
 
-
-export const getVisibleTodos = (state) => {
-    //getIn可以逐层遍历对象的属性
-    const todos  = state.getIn(['todos','data'])
-    const filter = state.get('filter')
+const getTodos = state =>state.todos.data
+export const getVisibleTodos = createSelector([getTodos,getFilter],(todos,filter)=>{
+    console.log('getvisibletodos')
     switch (filter) {
         case 'all':
             return todos
@@ -17,4 +16,4 @@ export const getVisibleTodos = (state) => {
         default:
             return new Error('Unknow filter '+filter)
     }
-}
+})
